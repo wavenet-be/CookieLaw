@@ -1,0 +1,35 @@
+@import '../../common.scss';
+
+.cl-banner
+{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    color:#fff;
+    background: rgba(0,0,0,0.8);
+    padding:10px;
+    z-index: 10000;
+
+    b
+    {
+        display: block;
+    }
+
+    section
+    {
+        text-align: right;
+    }
+
+    button
+    {
+        @include button();
+
+        &.cl-pref
+        {
+            margin-left: 5px;
+            border-color: $text-color;
+            background-color: $text-color;
+        }
+    }
+}

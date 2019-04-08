@@ -1,0 +1,14 @@
+@mixin button($color: #fff, $background: #28a745)
+{
+    color: $color;
+    background: $background;
+    border: solid 3px $background;
+    border-radius: 5px;
+    padding: 2px 8px;
+    cursor: pointer;
+    text-transform: none;
+}
+
+//wvn $background-color:#3cf;
+/*twain*/ $background-color:#072941;
+$text-color: #999;

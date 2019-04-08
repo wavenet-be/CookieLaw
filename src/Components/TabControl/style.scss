@@ -1,0 +1,62 @@
+@import '../../common.scss';
+
+.cl-preferences-overlay
+{
+    .cl-tabs
+    {
+        display: flex;
+
+        ul
+        {
+            width: 150px;
+            min-width: 150px;
+            border-right: solid 1px $background-color;
+
+            &, li
+            {
+                padding:0;
+                margin:0;
+                list-style: none;
+            }
+
+            li
+            {
+                border-bottom: solid 1px $background-color;
+                padding: 10px 5px 10px 10px;
+                cursor: pointer;
+
+                &.active
+                {
+                    background:$background-color;
+                    color:#fff;
+                }
+            }
+
+            li:last-child
+            {
+                border-bottom: none;
+            }
+        }
+
+        & > div
+        {
+            flex-grow: 1;
+            padding: 25px;
+            text-align: justify;
+        }
+
+        aside
+        {
+            display: flex;
+        }
+
+        h2
+        {
+            color: $background-color;
+            font: 500 25px sans-serif;
+            margin:0;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+    }
+}

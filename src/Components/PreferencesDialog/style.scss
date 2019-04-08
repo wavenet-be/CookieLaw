@@ -1,0 +1,61 @@
+@import '../../common.scss';
+
+.cl-preferences-overlay
+{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,.5);
+    user-select: none;
+    color: $text-color;
+    &, label, p
+    {
+        font-size: 14px;
+    }
+
+    .cl-dialog
+    {
+        width:750px;
+        max-width: 90%;
+        background: #fff;
+        border-top-left-radius: 10px;        
+        border-top-right-radius: 10px;        
+    }
+
+    header
+    {
+        background: $background-color;
+        border-top-left-radius: 10px;        
+        border-top-right-radius: 10px;        
+        font: normal 25px/80px sans-serif;
+        color: #fff;
+        padding-left: 15px;
+    }
+
+    footer
+    {
+        display: flex;
+        align-items: center;
+        padding:20px 10px;
+        border-top: solid 1px $background-color;
+
+        span{ flex-grow: 1;}
+    }
+
+    a, a:active, a:focus, a:hover {
+        text-decoration: none;
+        color: $background-color;
+        outline: 0;
+    }
+
+    button
+    {
+        @include button(#fff, $background-color);
+    }
+}

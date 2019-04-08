@@ -1,0 +1,59 @@
+.cl-preferences-overlay .cl-toggle
+{
+    position: relative;
+    line-height: 24px;
+
+    span
+    {
+        padding-left: 45px;
+    }
+
+    input
+    {
+        opacity: 0;
+        & + span
+        {
+            &:before
+            {
+                content: "";
+                position: absolute;
+                display: block;
+                left: 0;
+                top: 0;
+                width: 40px;
+                height: 24px;
+                border-radius: 16px;
+                background: #fff;
+                border: 1px solid #d9d9d9;
+                transition: all 0.3s;
+            }
+
+            &:after
+            {
+                content: "";
+                position: absolute;
+                display: block;
+                left: 0px;
+                top: 0px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: #fff;
+                border: 1px solid #d9d9d9;
+                transition: all 0.3s;
+            }
+        }
+
+        &:checked + span
+        {
+            &:before
+            {
+                background: #55D069;
+            }
+            &:after
+            {
+                margin-left: 16px;
+            }
+        }
+    }
+}
