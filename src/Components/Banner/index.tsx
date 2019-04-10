@@ -43,7 +43,7 @@ export class Banner extends Component<BannerProps>
 
     render({ settings }: BannerProps)
     {
-        let { bannerTitle, bannerMessage, bannerOk, bannerPreferences } = settings.labels;
+        const { bannerTitle, bannerMessage, bannerOk, bannerPreferences } = settings.labels;
         return <div className="cl-banner">
             {bannerTitle && <b>{bannerTitle}</b>}
             <Section paragraphs={[bannerMessage]} />

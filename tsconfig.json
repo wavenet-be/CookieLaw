@@ -7,8 +7,6 @@
         "target": "es5",
         "jsx": "react",
         "jsxFactory": "h",
-        // "noEmitHelpers": true,
-        // "importHelpers": true
     },
     "include": [
         "./src/**/*"

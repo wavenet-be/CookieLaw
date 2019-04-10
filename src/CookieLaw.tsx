@@ -1,29 +1,10 @@
 import { Banner, PreferencesDialog } from './Components';
 import { PreferencesRepository, getSettings } from './Repositories';
 import { applyCookieScripts } from './helper';
+import './polyfills';
 
 window.cookieLaw = Banner.show;
 window.cookieLawPreferences = PreferencesDialog.show;
-
-if (!Object.entries)
-{
-    Object.entries = function (obj)
-    {
-        var ownProps = Object.keys(obj),
-            i = ownProps.length,
-            resArray = new Array(i); // preallocate the Array
-        while (i--)
-            resArray[i] = [ownProps[i], obj[ownProps[i]]];
-
-        return resArray;
-    };
-}
-
-if (!Element.prototype.matches) 
-{
-    let prototype: any = Element.prototype;
-    prototype.matches = prototype.msMatchesSelector || prototype.webkitMatchesSelector;
-}
 
 function isMatch(node: Element, css: string): boolean
 {
@@ -34,27 +15,29 @@ function isMatch(node: Element, css: string): boolean
 
     return node.matches(css) || isMatch(node.parentElement, css);
 }
-
-let settings = getSettings();
-if (settings)
+document.addEventListener('DOMContentLoaded', function()
 {
-    if (settings.changePreferences)
+    const settings = getSettings();
+    if (settings)
     {
-        document.body.addEventListener('click', function (e)
+        if (settings.changePreferences)
         {
-            if (isMatch(e.target as Element, settings.changePreferences))
+            document.body.addEventListener('click', function (e)
             {
-                e.preventDefault();
-                window.cookieLawPreferences();
-            }
-        });
+                if (isMatch(e.target as Element, settings.changePreferences))
+                {
+                    e.preventDefault();
+                    window.cookieLawPreferences();
+                }
+            });
+        }
+    
+        const preferences = PreferencesRepository.load();
+        if (!Object.getOwnPropertyNames(preferences).length)
+        {
+            Banner.show();
+        }
+    
+        applyCookieScripts();
     }
-
-    let preferences = PreferencesRepository.load();
-    if (!Object.getOwnPropertyNames(preferences).length)
-    {
-        Banner.show();
-    }
-
-    applyCookieScripts();
-}
+});

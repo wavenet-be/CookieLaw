@@ -1,6 +1,6 @@
 import { PreferencesRepository } from "./Repositories";
 
-let hosts: { [name: string]: Element } = {};
+const hosts: { [name: string]: Element } = {};
 
 export function getHost(name: string)
 {
@@ -20,8 +20,8 @@ export function setHost(name: string, host: Element)
 
 export function applyCookieScripts()
 {
-    let preferences = PreferencesRepository.load();
-    for (var type in preferences)
+    const preferences = PreferencesRepository.load();
+    for (let type in preferences)
     {
         if (preferences[type])
         {
@@ -32,10 +32,9 @@ export function applyCookieScripts()
 
 export function enableScripts(type: string)
 {
-    const scripts: NodeListOf<HTMLScriptElement> = document.querySelectorAll(`script[data-consent="${type}"]`);
-    for (let i = 0, c = scripts.length; i < c; i++)
+    const scripts: HTMLScriptElement[] = document.querySelectorAll(`script[data-consent="${type}"]`) as any;
+    for (let script of scripts)
     {
-        var script = scripts[0];
         script.parentNode.replaceChild(enableScript(script), script);
     }
 }
@@ -45,8 +44,8 @@ function enableScript(script: HTMLScriptElement)
     const result = document.createElement('script');
     for(let i = script.attributes.length - 1; i >= 0; i--)
     {
-        var attribute = script.attributes[i];
-        result.setAttribute(attribute.name, attribute.value);
+        const {name, value} = script.attributes[i];
+        result.setAttribute(name, value);
     }
 
     result.text = script.text;
