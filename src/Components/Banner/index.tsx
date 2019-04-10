@@ -1,11 +1,16 @@
 import { h, Component, render } from 'preact';
 import './style.scss';
-import { labels } from '../../labels';
 import { getHost, setHost, applyCookieScripts } from '../../helper';
 import { PreferencesDialog } from '../PreferencesDialog';
-import { PreferencesRepository } from '../../Repositories';
+import { PreferencesRepository, getSettings, CookieLawSettings } from '../../Repositories';
+import { Section } from '../Section';
 
-export class Banner extends Component
+interface BannerProps
+{
+    settings: CookieLawSettings;
+}
+
+export class Banner extends Component<BannerProps>
 {
     private static readonly HOST = "banner";
 
@@ -17,7 +22,9 @@ export class Banner extends Component
 
     private save()
     {
-        PreferencesRepository.save({"strictly-necessary":true,"functionality":true,"tracking":true,"targeting":true});
+        type ConsentMap = { [name: string]: boolean };
+        const consents = this.props.settings.categories.filter(t => t.consent != null).reduce<ConsentMap>((c, t) => { c[t.code] = t.consent; return c; }, {});
+        PreferencesRepository.save(consents);
         Banner.hide();
         applyCookieScripts();
     }
@@ -25,7 +32,7 @@ export class Banner extends Component
     public static show()
     {
         const host = getHost(Banner.HOST);
-        setHost(Banner.HOST, render(<Banner />, host.parentElement, host));
+        setHost(Banner.HOST, render(<Banner settings={getSettings()} />, host.parentElement, host));
     }
 
     public static hide()
@@ -34,14 +41,15 @@ export class Banner extends Component
         setHost(Banner.HOST, render(null, host.parentElement, host));
     }
 
-    render()
+    render({ settings }: BannerProps)
     {
+        let { bannerTitle, bannerMessage, bannerOk, bannerPreferences } = settings.labels;
         return <div className="cl-banner">
-            {labels.banner.title && <b>{labels.banner.title}</b>}
-            <p>{labels.banner.message}</p>
-            <section>
-                <button onClick={this.save}>{labels.banner.ok}</button>
-                <button className="cl-pref" onClick={PreferencesDialog.show}>{labels.banner.preferences}</button>
+            {bannerTitle && <b>{bannerTitle}</b>}
+            <Section paragraphs={[bannerMessage]} />
+            <section className="cl-buttons">
+                <button onClick={this.save}>{bannerOk}</button>
+                <button className="cl-pref" onClick={PreferencesDialog.show}>{bannerPreferences}</button>
             </section>
         </div>;
     }

@@ -10,13 +10,14 @@
     background: rgba(0,0,0,0.8);
     padding:10px;
     z-index: 10000;
+    text-align: justify;
 
     b
     {
         display: block;
     }
 
-    section
+    .cl-buttons
     {
         text-align: right;
     }

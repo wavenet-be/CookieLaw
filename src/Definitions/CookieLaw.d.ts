@@ -3,8 +3,7 @@ interface Window{
     cookieLawPreferences(): void;
 }
 
-declare namespace JSX {
-    interface IntrinsicElements {
-        hgroup: HTMLAttributes
-    }
+interface Object
+{
+    entries(obj: any): [string, any][];
 }

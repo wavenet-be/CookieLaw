@@ -1,11 +1,15 @@
+@import '../../common.scss';
+$checked-color: #55D069;
 .cl-preferences-overlay .cl-toggle
 {
     position: relative;
     line-height: 24px;
+    min-width:20%;
 
     span
     {
         padding-left: 45px;
+        color: $checked-color;
     }
 
     input
@@ -13,6 +17,7 @@
         opacity: 0;
         & + span
         {
+            color: $text-color;
             &:before
             {
                 content: "";
@@ -46,9 +51,10 @@
 
         &:checked + span
         {
+            color: $checked-color;
             &:before
             {
-                background: #55D069;
+                background: $checked-color;
             }
             &:after
             {
