@@ -40,9 +40,8 @@ export function enableScripts(type: string)
 function enableScript(script: HTMLScriptElement)
 {
     const result = document.createElement('script');
-    for(let i = script.attributes.length - 1; i >= 0; i--)
+    for(const {name, value} of script.attributes)
     {
-        const {name, value} = script.attributes[i];
         result.setAttribute(name, value);
     }
 
