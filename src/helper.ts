@@ -29,11 +29,9 @@ export function applyCookieScripts()
         }
     }
 }
-
 export function enableScripts(type: string)
 {
-    const scripts: HTMLScriptElement[] = document.querySelectorAll(`script[data-consent="${type}"]`) as any;
-    for (let script of scripts)
+    for (const script of document.querySelectorAll<HTMLScriptElement>(`script[data-consent="${type}"]`))
     {
         script.parentNode.replaceChild(enableScript(script), script);
     }
