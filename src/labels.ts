@@ -11,6 +11,8 @@ export interface Labels
     dialogCheckbowAlways: string;
     dialogCheckboxActive: string;
     dialogCheckboxInactive: string;
+    dialogNext: string,
+    dialogPrevious: string,
     cookieUsed: string;
 }
 
@@ -23,6 +25,8 @@ const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
         bannerMessage: "We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content, to analyze our website traffic, and to understand where our visitors are coming from. For more information about the use of cookies on this web site, please consult our [cookie policy][cookiePolicy].",
         bannerOk: "OK",
         bannerPreferences: "Change my preferences",
+        dialogNext: 'Next',
+        dialogPrevious: 'Previous',
         dialogTitle: "Cookie Preferences",
         dialogSavePreferences: "Save my preferences",
         dialogCheckbowAlways: "Always",
@@ -36,6 +40,8 @@ const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
         bannerMessage: "Nous utilisons des cookies et d'autres technologies de suivi pour améliorer votre navigation sur notre site, pour afficher du contenu peronnalisé, pour analyser le trafique sur le site et déterminer d'où nos visiteur viennent. Si vous désirez plus d’informations sur les cookies liés à ce site web, consultez notre [politique de cookie][cookiePolicy].",
         bannerOk: "OK",
         bannerPreferences: "Changer mes préférences",
+        dialogNext: 'Suivant',
+        dialogPrevious: 'Précédent',
         dialogSavePreferences: "Sauver mes préférences",
         dialogCheckbowAlways: "Toujours",
         dialogCheckboxActive: "Actif",
@@ -47,6 +53,8 @@ const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
         bannerMessage: "We gebruiken cookies en andere trackingtechnologieën om uw surfervaring op onze website te verbeteren, om u gepersonaliseerde inhoud te tonen, om ons websiteverkeer te analyseren en om te begrijpen waar onze bezoekers vandaan komen. Voor meer informatie over de cookies op deze website kan u ons [cookiebeleid][cookiePolicy] raadplegen.",
         bannerOk: "OK",
         bannerPreferences: "Verander mijn voorkeuren",
+        dialogNext: 'Volgende',
+        dialogPrevious: 'Vorige',
         dialogSavePreferences: "Bewaar mijn voorkeuren",
         dialogCheckbowAlways: "Altijd",
         dialogCheckboxActive: "Actief",

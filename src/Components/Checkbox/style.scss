@@ -8,7 +8,6 @@ $checked-color: #55D069;
 
     span
     {
-        padding-left: 45px;
         color: $checked-color;
     }
 
@@ -18,6 +17,7 @@ $checked-color: #55D069;
         & + span
         {
             color: $text-color;
+            padding-left: 45px;
             &:before
             {
                 content: "";

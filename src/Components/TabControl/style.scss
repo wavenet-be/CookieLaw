@@ -5,6 +5,7 @@
     .cl-categories
     {
         display: flex;
+        flex-grow: 1;
 
         & > ul
         {
@@ -57,6 +58,7 @@
             margin:0;
             margin-bottom: 20px;
             flex-grow: 1;
+            text-align: start;
         }
 
         fieldset
@@ -85,6 +87,42 @@
             white-space: normal;
             color: $background-color;
             font-weight: bold;
+        }
+
+        .cl-mobile-navigation
+        {
+            display: none;
+        }
+
+        @media screen and (max-width:481px) 
+        {
+            & > ul
+            {
+                display: none;
+            }
+
+            & > div
+            {
+                display: flex;
+                flex-direction: column;
+            }
+
+            aside + section
+            {
+                flex-grow: 1;
+            }
+
+            .cl-mobile-navigation
+            {
+                display: flex;
+                margin: 20px -25px -25px -25px;
+                padding: 12px 25px;
+
+                span
+                {
+                    flex-grow: 1
+                }
+            }        
         }
     }
 }

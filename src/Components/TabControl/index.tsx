@@ -71,6 +71,9 @@ export class TabControl extends Component<TabControlProps, TabControlState>
     {
         const cookies = Object.entries(currentCategory.cookies || {});
         const externalUrl = /^(https?:|\/\/)/i;
+        const categoryIndex = this.props.categories.indexOf(currentCategory);
+        const previousCategory = this.props.categories[categoryIndex - 1];
+        const nextCategory = this.props.categories[categoryIndex + 1];
         return <div class="cl-categories">
             <ul>
                 {categories.map(t => <li key={t.code} className={t === currentCategory ? "active" : undefined} onClick={() => this.setState({ currentCategory: t })}>{t.tabTitle || t.title}</li>)}
@@ -82,11 +85,16 @@ export class TabControl extends Component<TabControlProps, TabControlState>
                 </aside>
                 <Section paragraphs={currentCategory.description} links={links} />
                 {cookies.length > 0 && <fieldset>
-                    <legend>Cookies used</legend>
+                    <legend>{this.settings.labels.cookieUsed}</legend>
                     <ul>
                         {cookies.map(([name, url]) => <li><a href={url} target={externalUrl.test(url) ? '_blank' : null} rel={externalUrl.test(url) ? "noopener noreferrer" : null}>{name}</a></li>)}
                     </ul>
                 </fieldset>}
+                <section class="cl-mobile-navigation">
+                    {previousCategory && <button onClick={() => this.setState({currentCategory: previousCategory})}>Previous</button>}
+                    <span />
+                    {nextCategory && <button onClick={() => this.setState({currentCategory: nextCategory})}>Next</button>}
+                </section>
             </div>
         </div>
     }
