@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import './style.scss';
 import { Checkbox } from '../Checkbox';
-import { PreferencesRepository, CookieCategory, getSettings } from '../../Repositories';
+import { PreferencesRepository, CookieCategory, getSettings, Links } from '../../Repositories';
 import { Section } from '../Section';
 
 interface TabControlState
@@ -13,6 +13,7 @@ interface TabControlState
 interface TabControlProps
 {
     categories: CookieCategory[]
+    links: Links;
 }
 
 export class TabControl extends Component<TabControlProps, TabControlState>
@@ -66,7 +67,7 @@ export class TabControl extends Component<TabControlProps, TabControlState>
             <label className="cl-toggle"><span>{label}</span></label>
     }
 
-    public render({categories}: TabControlProps, { currentCategory: currentCategory }: TabControlState)
+    public render({categories, links}: TabControlProps, { currentCategory: currentCategory }: TabControlState)
     {
         const cookies = Object.entries(currentCategory.cookies || {});
         const externalUrl = /^(https?:|\/\/)/i;
@@ -79,11 +80,11 @@ export class TabControl extends Component<TabControlProps, TabControlState>
                     <h2>{currentCategory.title}</h2>
                     {this.getCheckbox(currentCategory)}
                 </aside>
-                <Section paragraphs={currentCategory.description} />
+                <Section paragraphs={currentCategory.description} links={links} />
                 {cookies.length > 0 && <fieldset>
                     <legend>Cookies used</legend>
                     <ul>
-                        {cookies.map(([name, url]) => <li><a href={url} target={externalUrl.test(url) ? '_blank' : null}>{name}</a></li>)}
+                        {cookies.map(([name, url]) => <li><a href={url} target={externalUrl.test(url) ? '_blank' : null} rel={externalUrl.test(url) ? "noopener noreferrer" : null}>{name}</a></li>)}
                     </ul>
                 </fieldset>}
             </div>

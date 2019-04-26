@@ -66,13 +66,19 @@ export class PreferencesDialog extends Component<PreferencesDialogProps>
         return <div className="cl-preferences-overlay" onClick={e => e.target === e.currentTarget && PreferencesDialog.hide()}>
             <div className="cl-dialog">
                 <header>
-                    Cookies Preferences
+                    {settings.labels.dialogTitle}
                 </header>
-                <TabControl ref={t => this.tabs = t} categories={settings.categories} />
+                <TabControl ref={t => this.tabs = t} categories={settings.categories} links={settings.links} />
                 <footer>
-                    <span style="visibility:hidden">
-                        Cookies Preferences by <a href="https://www.wavenet.be/" target="_blank" rel="noopener noreferrer">Wavenet ©</a>
-                    </span>
+                    {
+                        !settings.licence && 
+                        <span>
+                            Cookie Preferences by <a href="https://www.wavenet.be/" target="_blank" rel="noopener noreferrer">Wavenet ©</a>
+                        </span>
+                    }
+                    {
+                        settings.licence && <span />
+                    }
                     <button onClick={this.save}>{settings.labels.dialogSavePreferences}</button>
                 </footer>
             </div>

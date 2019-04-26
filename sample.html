@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="fr">
 
 
 <head data-cdn="https://cdn.wavenet.be/">
@@ -720,24 +720,18 @@
         alert('Targeting allowed!');
     </script>
     <script src="https://cdn.wavenet.be/Scripts/All-h-9E7F11A9.js" async></script>
-    <link rel="stylesheet" href="dist/CookieLaw.css" />
+    <script src="dist/CookieLaw.js" integrity="sha384-mXXTGgsxR1PAgqxgG6zn+CBepS+O8oWziinv7QTgcnFLvCS030hOvJ3MoW44HYzH" crossorigin="anonymous" async referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="dist/CookieLaw.css" integrity="sha384-FWp/mHQwkezO+hedIm8Yiq4A9g7E/EMUFdB16mJKlKOnY4AsmvuOLPC19b99gz5Z" crossorigin="anonymous" referrerpolicy="origin" />
     <link rel="stylesheet" href="twain.css" />
-    <script src="dist/CookieLaw.js"></script>
 
     <script type="application/json" id="CookieLaw">
         {
-            "labels":{"bannerMessage":"!HTML!We gebruiken cookies en andere trackingtechnologieën om uw surfervaring op onze website te verbeteren, om u gepersonaliseerde inhoud te tonen, om ons websiteverkeer te analyseren en om te begrijpen waar onze bezoekers vandaan komen. Voor meer informatie over de cookies op deze website kan u ons <a href=\"#ici\">cookiebeleid</a> raadplegen."},
+            "links": {"cookiePolicy":"#yes!"},
+            "licence": true,
             "changePreferences":"[href$='#cookie-preferences']",
-            "categories":[
-               {
-                  "code":"introduction",
-                  "tabTitle":"Uw privacy",
-                  "title":"Uw privacy is belangrijk voor ons",
-                  "description":[
-                     "Een cookie is een klein tekstbestand dat een website op uw computer of mobiel toestel opslaat wanneer u die site bezoekt. Zo onthoudt de website de pagina’s die u heeft bezocht en uw voorkeuren (zoals gebruikersnaam, taal, lettergrootte en andere voorkeuren) zodat u die niet bij ieder bezoek aan de site opnieuw hoeft aan te passen.",
-                     "U kan uw voorkeuren instellen en bepaalde types van cookies weigeren tijdens het browsen. Het weigeren van bepaalde cookies kan wel inhouden dat u sommige onderdelen van de website niet meer kan gebruiken."
-                  ]
-               },
+            "categories2":[
+                "introduction",
+                {"code":"functionality", "cookies":{"lol": "//google.com"}},
                {
                   "code":"strictly-necessary",
                   "title":"Strikt noodzakelijke cookies",

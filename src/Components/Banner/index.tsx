@@ -46,7 +46,7 @@ export class Banner extends Component<BannerProps>
         const { bannerTitle, bannerMessage, bannerOk, bannerPreferences } = settings.labels;
         return <div className="cl-banner">
             {bannerTitle && <b>{bannerTitle}</b>}
-            <Section paragraphs={[bannerMessage]} />
+            <Section paragraphs={[bannerMessage]} links={settings.links} />
             <section className="cl-buttons">
                 <button onClick={this.save}>{bannerOk}</button>
                 <button className="cl-pref" onClick={PreferencesDialog.show}>{bannerPreferences}</button>

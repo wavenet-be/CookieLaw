@@ -1,4 +1,4 @@
-import { Labels, getLabels } from "../../labels";
+import { Labels, getLabels, getCategories } from "../../labels";
 
 export interface CookieCategory
 {
@@ -11,15 +11,23 @@ export interface CookieCategory
     required?: boolean;
 }
 
+export interface Links
+{
+    [link: string]: string;
+}
+
 export interface CookieLawSettings
 {
     locale?: string;
     labels: Labels;
     changePreferences?: string;
-    categories: CookieCategory[]
+    categories: CookieCategory[];
+    links: Links;
+    licence?: boolean;
 }
 
 let settings: CookieLawSettings;
+const defaultCategories = ['introduction', 'strictly-necessary', 'functionality', 'tracking', 'more_information'];
 export function getSettings(): CookieLawSettings
 {
     if (settings)
@@ -28,13 +36,9 @@ export function getSettings(): CookieLawSettings
     }
 
     const settingsElement = document.getElementById('CookieLaw');
-    if (!settingsElement)
-    {
-        return null;
-    }
-
-    settings = JSON.parse(settingsElement.textContent);
+    settings = settingsElement ? JSON.parse(settingsElement.textContent) : {};
     settings.locale = settings.locale || document.querySelector('html').lang;
     settings.labels = {...getLabels(settings.locale), ...settings.labels};
+    settings.categories = getCategories(settings.locale, settings.categories || defaultCategories);
     return settings;
 }

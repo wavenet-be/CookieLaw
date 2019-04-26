@@ -15,7 +15,20 @@ function isMatch(node: Element, css: string): boolean
 
     return node.matches(css) || isMatch(node.parentElement, css);
 }
-document.addEventListener('DOMContentLoaded', function()
+
+function ready(cb: ()=>void)
+{
+    if (document.readyState === "loading")
+    {
+        document.addEventListener('DOMContentLoaded', cb);
+    }
+    else
+    {
+        cb();
+    }
+}
+
+ready(function()
 {
     const settings = getSettings();
     if (settings)
