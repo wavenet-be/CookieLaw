@@ -1,8 +1,9 @@
 {
-  "name": "cookies",
+  "name": "@wavenet/test-cookie-law",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Helps your visitors to know which kind of cookies you're using + user preferences.",
+  "main": "dist/CookieLaw.js",
+  "files": ["dist/CookieLaw.js", "dist/CookieLaw.css"],
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^2.1.1",
@@ -24,9 +25,12 @@
     "webpack-cli": "^3.3.0",
     "webpack-stream": "^5.2.1"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Olivier Bossaer",
+  "license": "LGPL-3.0",
+  "homepage": "https://github.com/wavenet-be/cookie-law#readme",
+  "bugs": {
+    "url": "https://github.com/wavenet-be/cookie-law/issues",
+    "email": "cookie-law@wavenet.be"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": ["Cookies", "EU", "Law", "Preferences"]
 }
