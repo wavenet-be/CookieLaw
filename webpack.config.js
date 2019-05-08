@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = {
     entry: "./src/CookieLaw.tsx",
-    mode: 'production',
+    mode: 'development',
     output: {
         filename: "CookieLaw.js",
         path: __dirname + "/dist"
@@ -45,5 +45,14 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "CookieLaw.css"
           })
-      ]
+      ],
+      // Mount web server with HMR.
+  devServer: {
+    historyApiFallback: true,
+    contentBase: __dirname + "/dist",
+    compress: true,
+    port: 9000,
+    hot: true,
+    inline: true
+  }
 };

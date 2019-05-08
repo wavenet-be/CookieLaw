@@ -91,9 +91,9 @@ export class TabControl extends Component<TabControlProps, TabControlState>
                     </ul>
                 </fieldset>}
                 <section class="cl-mobile-navigation">
-                    {previousCategory && <button onClick={() => this.setState({currentCategory: previousCategory})}>Previous</button>}
+                    {previousCategory && <button onClick={() => this.setState({currentCategory: previousCategory})}>{this.settings.labels.dialogPrevious}</button>}
                     <span />
-                    {nextCategory && <button onClick={() => this.setState({currentCategory: nextCategory})}>Next</button>}
+                    {nextCategory && <button onClick={() => this.setState({currentCategory: nextCategory})}>{this.settings.labels.dialogNext}</button>}
                 </section>
             </div>
         </div>

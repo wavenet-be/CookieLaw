@@ -20,12 +20,15 @@ export class Checkbox extends Component<CheckboxProps>
     {
         e.preventDefault();
         const {onClick, checked} = this.props;
-        onClick && onClick(!checked);
+        if (onClick)
+        {
+            onClick(!checked);
+        }
     }
 
     render({checked, label}: CheckboxProps)
     {
-        return <label class="cl-toggle">
+        return <label className="cl-toggle">
             <input type="checkbox" checked={checked} onChange={this.onClick} />
             <span>{label}</span>
         </label>;

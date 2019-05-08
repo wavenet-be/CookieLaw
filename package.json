@@ -1,18 +1,24 @@
 {
-  "name": "@wavenet/test-cookie-law",
+  "name": "@wavenet/test2-cookie-law",
   "version": "1.0.0",
   "description": "Helps your visitors to know which kind of cookies you're using + user preferences.",
   "main": "dist/CookieLaw.js",
-  "files": ["dist/CookieLaw.js", "dist/CookieLaw.css"],
+  "files": [
+    "dist/CookieLaw.js",
+    "dist/CookieLaw.css"
+  ],
+  "scripts": {
+    "serve": "webpack-dev-server"
+  },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^2.1.1",
     "gulp": "^4.0.1",
+    "gulp-brotli": "^1.2.1",
     "gulp-clean": "^0.4.0",
     "gulp-gzip": "^1.4.2",
-    "gulp-brotli": "^1.2.1",
     "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "preact": "^8.4.2",
@@ -21,8 +27,9 @@
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.3",
     "typescript": "^3.4.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1",
     "webpack-stream": "^5.2.1"
   },
   "author": "Olivier Bossaer",
@@ -32,5 +39,10 @@
     "url": "https://github.com/wavenet-be/cookie-law/issues",
     "email": "cookie-law@wavenet.be"
   },
-  "keywords": ["Cookies", "EU", "Law", "Preferences"]
+  "keywords": [
+    "Cookies",
+    "EU",
+    "Law",
+    "Preferences"
+  ]
 }

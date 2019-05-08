@@ -1,6 +1,6 @@
 if (!Object.entries)
 {
-    Object.entries = function (obj)
+    Object.entries = function (obj: any)
     {
         let ownProps = Object.keys(obj),
             i = ownProps.length,
