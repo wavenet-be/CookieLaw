@@ -9,6 +9,11 @@
             "problemMatcher": []
         },
         {
+            "type": "npm",
+            "script": "serve",
+            "problemMatcher": []
+        },
+        {
             "type": "gulp",
             "task": "prod",
             "problemMatcher": []
