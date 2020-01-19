@@ -1,5 +1,5 @@
 import { Banner, PreferencesDialog } from './Components';
-import { PreferencesRepository, getSettings } from './Repositories';
+import { PreferencesRepository, getSettings, loadSettings } from './Repositories';
 import { applyCookieScripts } from './helper';
 import './polyfills';
 
@@ -30,8 +30,7 @@ function ready(cb: ()=>void)
 
 ready(function()
 {
-    const settings = getSettings();
-    if (settings)
+    loadSettings(settings =>
     {
         if (settings.changePreferences)
         {
@@ -52,5 +51,5 @@ ready(function()
         }
     
         applyCookieScripts();
-    }
+    });
 });

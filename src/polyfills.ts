@@ -17,3 +17,11 @@ if (!Element.prototype.matches)
     let prototype: any = Element.prototype;
     prototype.matches = prototype.msMatchesSelector || prototype.webkitMatchesSelector;
 }
+
+if (!Array.prototype.find)
+{
+    Array.prototype.find = function(this: Array<any>, predicate:(value:any, index: number, obj: any[])=> boolean, thisArg?:any)
+    {
+        return this.filter(predicate, thisArg)[0];
+    };
+}

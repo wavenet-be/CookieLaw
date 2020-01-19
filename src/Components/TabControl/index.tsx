@@ -25,7 +25,7 @@ export class TabControl extends Component<TabControlProps, TabControlState>
         const prefs = PreferencesRepository.load();
         for (let pref in prefs)
         {
-            const category = props.categories.filter(t => t.code === pref)[0];
+            const category = props.categories.find(t => t.code === pref);
             if (category)
             {
                 category.consent = prefs[pref];

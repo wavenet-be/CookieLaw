@@ -38,11 +38,15 @@
     <link rel="stylesheet" href="CookieLaw.css" crossorigin="anonymous" referrerpolicy="origin" />
     <link rel="stylesheet" href="CookieLaw-Custom.css" />
 
-    <script type="application/json" id="CookieLaw">
+    <script type="application/json" id="CookieLaw" src="cookielaw.json">
+    </script>
+    <script type="application/json" id="1CookieLaw">
         {
             "links": {"cookiePolicy":"#yes!"},
             "licence": true,
             "changePreferences":"#cookie-preferences",
+            "storage": "cookie",
+            "isOptOut": true,
             "categories":[
                 "introduction",
                 {"code":"strictly-necessary", "cookies":{"Twain": "https://www.twain.eu/nl/juridische-informatie/"}},

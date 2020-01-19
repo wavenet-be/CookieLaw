@@ -23,11 +23,49 @@ export interface CookieLawSettings
     changePreferences?: string;
     categories: CookieCategory[];
     links: Links;
+    storage?: 'local' | 'cookie';
+    isOptOut?: boolean;
     licence?: boolean;
 }
 
 let settings: CookieLawSettings;
 const defaultCategories = ['introduction', 'strictly-necessary', 'functionality', 'tracking', 'more_information'];
+export function loadSettings(cb: (settings:CookieLawSettings)=>void)
+{
+    function fill()
+    {
+        settings.locale = settings.locale || document.querySelector('html').lang;
+        settings.labels = {...getLabels(settings.locale), ...settings.labels};
+        settings.categories = getCategories(settings.locale, settings.categories || defaultCategories);
+        settings.storage == settings.storage || 'local';
+        cb(settings);
+    }
+
+    if (!settings)
+    {
+        const settingsElement = document.getElementById('CookieLaw') as HTMLScriptElement;
+        if (settingsElement && settingsElement.src)
+        {
+            fetch(settingsElement.src)
+                .then(r => r.json())
+                .then(s => 
+                {
+                    settings = s;
+                    fill();
+                });
+        }
+        else if (settingsElement)
+        {
+            settings = JSON.parse(settingsElement.textContent);
+            fill();
+        }
+    }
+    else
+    {
+        cb(settings);
+    }
+}
+
 export function getSettings(): CookieLawSettings
 {
     if (settings)
@@ -35,10 +73,5 @@ export function getSettings(): CookieLawSettings
         return settings;
     }
 
-    const settingsElement = document.getElementById('CookieLaw');
-    settings = settingsElement ? JSON.parse(settingsElement.textContent) : {};
-    settings.locale = settings.locale || document.querySelector('html').lang;
-    settings.labels = {...getLabels(settings.locale), ...settings.labels};
-    settings.categories = getCategories(settings.locale, settings.categories || defaultCategories);
-    return settings;
+    throw Error("No CookieLaw settings loaded.");
 }
