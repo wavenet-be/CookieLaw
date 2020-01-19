@@ -26,7 +26,8 @@
         background: #fff;
         border-radius: 10px;        
 
-        @media screen and (max-width:481px) 
+        @media screen and (max-width:481px) ,
+               screen and (max-width:750px) and (orientation: landscape)
         {
             width:100vw;
             height: 100vh;
@@ -45,7 +46,8 @@
         font: normal 25px/80px sans-serif;
         color: #fff;
         padding-left: 15px;
-        @media screen and (max-width:481px) 
+        @media screen and (max-width:481px)  ,
+               screen and (max-width:750px) and (orientation: landscape)
         {
             border-radius: 0;
         }

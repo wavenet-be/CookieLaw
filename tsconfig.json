@@ -13,7 +13,7 @@
         "es2015.iterable"
         ],
         "jsx": "react",
-        "jsxFactory": "h",
+        "jsxFactory": "h"
     },
     "include": [
         "./src/**/*"

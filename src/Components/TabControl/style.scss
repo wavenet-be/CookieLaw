@@ -94,7 +94,8 @@
             display: none;
         }
 
-        @media screen and (max-width:481px) 
+        @media screen and (max-width:481px),
+               screen and (max-width:750px) and (orientation: landscape)
         {
             & > ul
             {
