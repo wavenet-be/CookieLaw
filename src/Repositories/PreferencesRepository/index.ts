@@ -5,6 +5,11 @@ interface CookiePreferences
     [type: string]: boolean;
 }
 
+export interface IUserConsent
+{
+    stored: boolean;
+}
+
 export class PreferencesRepository
 {
     private static readonly COOKIE_NAME = 'CookieLaw';
@@ -19,7 +24,7 @@ export class PreferencesRepository
                 break;
 
             case 'cookie':
-                document.cookie = `${this.COOKIE_NAME}=${JSON.stringify(preferences)};max-age=31536000`;
+                document.cookie = `${this.COOKIE_NAME}=${JSON.stringify(preferences)};path=/;max-age=31536000`;
                 break;
 
             default:
@@ -27,7 +32,7 @@ export class PreferencesRepository
         }
     }
 
-    public static load(): CookiePreferences
+    public static load(userConsent?: IUserConsent): CookiePreferences
     {
         let settings = getSettings();
         let preferences: string;
@@ -52,6 +57,11 @@ export class PreferencesRepository
         }
 
         let result = JSON.parse(preferences);
+        if (userConsent)
+        {
+            userConsent.stored = !!result;
+        }
+
         if (!result && settings.isOptOut)
         {
             result = settings.categories.reduce(function(r: any, v)

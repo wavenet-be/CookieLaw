@@ -45,12 +45,12 @@ export class TabControl extends Component<TabControlProps, TabControlState>
         }
 
         const consent = this.state.consents[category.code];
-        const {dialogCheckboxActive, dialogCheckboxInactive, dialogCheckbowAlways} = this.settings.labels;
+        const {dialogCheckboxActive, dialogCheckboxInactive, dialogCheckboxAlways } = this.settings.labels;
         let label = consent ? dialogCheckboxActive : dialogCheckboxInactive;
         let onClick: (consent: boolean) => void;
         if (category.required)
         {
-            label = `${dialogCheckbowAlways} ${label}`;
+            label = `${dialogCheckboxAlways} ${label}`;
             onClick = () => this.forceUpdate();
         }
         else

@@ -1,5 +1,5 @@
 import { Banner, PreferencesDialog } from './Components';
-import { PreferencesRepository, getSettings, loadSettings } from './Repositories';
+import { PreferencesRepository, getSettings, loadSettings, IUserConsent } from './Repositories';
 import { applyCookieScripts } from './helper';
 import './polyfills';
 
@@ -44,8 +44,9 @@ ready(function()
             });
         }
     
-        const preferences = PreferencesRepository.load();
-        if (!Object.getOwnPropertyNames(preferences).length)
+        const userConsent: IUserConsent = {stored:false};
+        PreferencesRepository.load(userConsent);
+        if (!userConsent.stored)
         {
             Banner.show();
         }

@@ -1,6 +1,6 @@
 {
   "name": "@wavenet/cookie-law",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.2",
   "description": "Helps your visitors to know which kind of cookies you're using + user preferences.",
   "main": "dist/CookieLaw.js",
   "files": [

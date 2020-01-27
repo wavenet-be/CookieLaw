@@ -8,7 +8,7 @@ export interface Labels
     bannerPreferences: string;
     dialogTitle: string;
     dialogSavePreferences: string;
-    dialogCheckbowAlways: string;
+    dialogCheckboxAlways: string;
     dialogCheckboxActive: string;
     dialogCheckboxInactive: string;
     dialogNext: string,
@@ -29,7 +29,7 @@ const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
         dialogPrevious: 'Previous',
         dialogTitle: "Cookie Preferences",
         dialogSavePreferences: "Save my preferences",
-        dialogCheckbowAlways: "Always",
+        dialogCheckboxAlways: "Always",
         dialogCheckboxActive: "Active",
         dialogCheckboxInactive: "Inactive",
         cookieUsed: "Cookies"
@@ -43,7 +43,7 @@ const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
         dialogNext: 'Suivant',
         dialogPrevious: 'Précédent',
         dialogSavePreferences: "Sauver mes préférences",
-        dialogCheckbowAlways: "Toujours",
+        dialogCheckboxAlways: "Toujours",
         dialogCheckboxActive: "Actif",
         dialogCheckboxInactive: "Inactif"
     },
@@ -56,7 +56,7 @@ const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
         dialogNext: 'Volgende',
         dialogPrevious: 'Vorige',
         dialogSavePreferences: "Bewaar mijn voorkeuren",
-        dialogCheckbowAlways: "Altijd",
+        dialogCheckboxAlways: "Altijd",
         dialogCheckboxActive: "Actief",
         dialogCheckboxInactive: "Inactief"
     }
