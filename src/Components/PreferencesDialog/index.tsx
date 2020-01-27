@@ -12,7 +12,7 @@ interface PreferencesDialogProps
 
 export class PreferencesDialog extends Component<PreferencesDialogProps>
 {
-    private static readonly HOST = "preferences";
+    private static readonly HOST = "CookieLawPreferences";
 
     private tabs: TabControl;
 
@@ -63,7 +63,7 @@ export class PreferencesDialog extends Component<PreferencesDialogProps>
 
     public render({ settings }: PreferencesDialogProps) 
     {
-        return <div className="cl-preferences-overlay" onClick={e => e.target === e.currentTarget && PreferencesDialog.hide()}>
+        return <div className="cl-preferences-overlay notranslate" onClick={e => e.target === e.currentTarget && PreferencesDialog.hide()}>
             <div className="cl-dialog">
                 <header>
                     {settings.labels.dialogTitle}

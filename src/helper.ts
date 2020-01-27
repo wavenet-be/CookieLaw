@@ -6,8 +6,12 @@ export function getHost(name: string)
 {
     if (!hosts[name])
     {
-        hosts[name] = document.createElement('div');
-        document.body.appendChild(hosts[name]);
+        hosts[name] = document.getElementById(name);
+        if (!hosts[name])
+        {
+            hosts[name] = document.createElement('div');
+            document.body.appendChild(hosts[name]);
+        }
     }
 
     return hosts[name];

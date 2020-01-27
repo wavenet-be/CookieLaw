@@ -12,7 +12,7 @@ interface BannerProps
 
 export class Banner extends Component<BannerProps>
 {
-    private static readonly HOST = "banner";
+    private static readonly HOST = "CookieLawBanner";
 
     constructor()
     {
