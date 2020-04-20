@@ -47,8 +47,15 @@ export class PreferencesRepository
                 document.cookie.split(';').find(cookie => 
                     {
                         let value = parser.exec(cookie);
-                        preferences = value && value[1];
-                        return !!preferences;
+                        if (value)
+                        {
+                            preferences = value[1];
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     });
                 break;
 
