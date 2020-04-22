@@ -35,7 +35,7 @@ export class PreferencesRepository
     public static load(userConsent?: IUserConsent): CookiePreferences
     {
         let settings = getSettings();
-        let preferences: string;
+        let preferences: string = null;
         switch(settings.storage || 'local')
         {
             case 'local':
