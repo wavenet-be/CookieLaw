@@ -47,7 +47,7 @@ function compressGzip()
 
 function taskClean()
 {
-    return src(['./dist/**/*','!./dist/index.html','!./dist/CookieLaw-Custom.css','!./dist/mockup.jpg', '!./dist/cookielaw.json'], { read: false }).pipe(clean());
+    return src(['./dist/**/*','!./dist/index.html','!./dist/CookieLaw-Custom.css','!./dist/mockup.jpg', '!./dist/cookielaw.json', '!./dist/fake-analytics.js'], { read: false }).pipe(clean());
 }
 
 function buildHashes()
