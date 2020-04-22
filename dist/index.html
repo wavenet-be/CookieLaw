@@ -23,6 +23,9 @@
 </head>
 <body id="body">
     <div id="CookieLawBanner"></div>
+    <script type="text/html" data-consent="functionality">
+        <img src="https://picsum.photos/300/200" />
+    </script>
     <img src="mockup.jpg" />
     <div id="cookie-preferences">
         Change Cookie Preferences
@@ -33,6 +36,7 @@
     <script type="text/plain" data-consent="tracking">
         alert('Tracking allowed!');
     </script>
+    <script type="text/plain" data-consent="tracking" src="fake-analytics.js"></script>
     <script type="text/plain" data-consent="targeting">
         alert('Targeting allowed!');
     </script>
@@ -48,7 +52,7 @@
             "licence": true,
             "changePreferences":"#cookie-preferences",
             "storage": "cookie",
-            "isOptOut": true,
+            "isOptOut": false,
             "categories":[
                 "introduction",
                 {"code":"strictly-necessary", "cookies":{"Twain": "https://www.twain.eu/nl/juridische-informatie/"}},

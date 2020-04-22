@@ -1,4 +1,4 @@
-import { PreferencesRepository } from "./Repositories";
+import { PreferencesRepository, getSettings } from "./Repositories";
 
 const hosts: { [name: string]: Element } = {};
 
@@ -22,18 +22,27 @@ export function setHost(name: string, host: Element)
     hosts[name] = host;
 }
 
-export function applyCookieScripts()
+export function applyPreferences()
 {
     const preferences = PreferencesRepository.load();
+    const categories = getSettings().categories;
     for (let type in preferences)
     {
         if (preferences[type])
         {
             enableScripts(type);
         }
+        else
+        {
+            for(let cookieName of categories.find(c => c.code === type)?.cleaning ?? [])
+            {
+                document.cookie = `${cookieName}=;path=/;max-age=0`;
+            }
+        }
     }
 }
-export function enableScripts(type: string)
+
+function enableScripts(type: string)
 {
     for (const script of document.querySelectorAll<HTMLScriptElement>(`script[data-consent="${type}"]`))
     {
@@ -43,15 +52,26 @@ export function enableScripts(type: string)
 
 function enableScript(script: HTMLScriptElement)
 {
-    const result = document.createElement('script');
+    let result: HTMLElement;
+    if (script.type !== "text/html")
+    {
+        let newScript = result = document.createElement('script');
+        newScript.text = script.text;
+    }
+    else
+    {
+        result = document.createElement('cookielaw-placeholder');
+        result.innerHTML = script.text;
+    }
+
+    // copy attributes.
     for(const {name, value} of script.attributes)
     {
         result.setAttribute(name, value);
     }
 
-    result.text = script.text;
-    result.setAttribute('data-original-consent', result.getAttribute('data-consent'));
     result.removeAttribute('data-consent')
     result.removeAttribute('type');
+    result.setAttribute('data-original-consent', script.dataset.consent);
     return result;
 }

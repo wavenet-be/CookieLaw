@@ -63,7 +63,7 @@ export class PreferencesRepository
                 throw Error(`Unknown storage: ${settings.storage}`);
         }
 
-        let result = JSON.parse(preferences);
+        let result: CookiePreferences = JSON.parse(preferences);
         if (userConsent)
         {
             userConsent.stored = !!result;
