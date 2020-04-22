@@ -1,7 +1,7 @@
 import { h, Component, render } from 'preact';
 import './style.scss';
 import { TabControl } from '../TabControl';
-import { getHost, setHost, applyCookieScripts } from '../../helper';
+import { getHost, setHost, applyPreferences } from '../../helper';
 import { Banner } from '../Banner';
 import { PreferencesRepository, CookieLawSettings, getSettings } from '../../Repositories';
 
@@ -36,7 +36,7 @@ export class PreferencesDialog extends Component<PreferencesDialogProps>
         PreferencesRepository.save(consents);
         PreferencesDialog.hide();
         Banner.hide();
-        applyCookieScripts();
+        applyPreferences();
     }
 
     public componentDidMount()
