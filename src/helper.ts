@@ -1,4 +1,4 @@
-import { PreferencesRepository } from "./Repositories";
+import { PreferencesRepository, getSettings } from "./Repositories";
 
 const hosts: { [name: string]: Element } = {};
 
@@ -25,11 +25,19 @@ export function setHost(name: string, host: Element)
 export function applyPreferences()
 {
     const preferences = PreferencesRepository.load();
+    const categories = getSettings().categories;
     for (let type in preferences)
     {
         if (preferences[type])
         {
             enableScripts(type);
+        }
+        else
+        {
+            for(let cookieName of categories.find(c => c.code === type)?.cleaning ?? [])
+            {
+                document.cookie = `${cookieName}=;path=/;max-age=0`;
+            }
         }
     }
 }

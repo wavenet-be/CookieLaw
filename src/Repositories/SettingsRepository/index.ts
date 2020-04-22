@@ -9,6 +9,7 @@ export interface CookieCategory
     cookies?: { [name: string]: string };
     consent?: boolean;
     required?: boolean;
+    cleaning?: string[];
 }
 
 export interface Links

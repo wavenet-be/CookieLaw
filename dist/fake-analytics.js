@@ -1,0 +1,1 @@
+document.cookie = "tracking=1;path=/";
