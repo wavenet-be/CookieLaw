@@ -1,6 +1,6 @@
 import { h, Component, render } from 'preact';
 import './style.scss';
-import { getHost, setHost, applyCookieScripts } from '../../helper';
+import { getHost, setHost, applyPreferences } from '../../helper';
 import { PreferencesDialog } from '../PreferencesDialog';
 import { PreferencesRepository, getSettings, CookieLawSettings } from '../../Repositories';
 import { Section } from '../Section';
@@ -26,7 +26,7 @@ export class Banner extends Component<BannerProps>
         const consents = this.props.settings.categories.filter(t => t.consent != null).reduce<ConsentMap>((c, t) => { c[t.code] = t.consent; return c; }, {});
         PreferencesRepository.save(consents);
         Banner.hide();
-        applyCookieScripts();
+        applyPreferences();
     }
 
     public static show()

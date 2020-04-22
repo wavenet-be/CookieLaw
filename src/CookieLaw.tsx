@@ -1,6 +1,6 @@
 import { Banner, PreferencesDialog } from './Components';
 import { PreferencesRepository, getSettings, loadSettings, IUserConsent } from './Repositories';
-import { applyCookieScripts } from './helper';
+import { applyPreferences } from './helper';
 import './polyfills';
 
 window.cookieLaw = Banner.show;
@@ -51,6 +51,6 @@ ready(function()
             Banner.show();
         }
     
-        applyCookieScripts();
+        applyPreferences();
     });
 });
