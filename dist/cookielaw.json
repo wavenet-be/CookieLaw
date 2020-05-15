@@ -1,0 +1,15 @@
+{
+    "links": {"cookiePolicy":"#yes!"},
+    "licence": true,
+    "changePreferences":"#cookie-preferences",
+    "storage": "cookie",
+    "isOptOut": false,
+    "defaultCheckboxState": false,
+    "categories":[
+        "introduction",
+        {"code":"strictly-necessary", "cookies":{"Twain": "https://www.twain.eu/nl/juridische-informatie/"}},
+        "functionality", 
+        {"code":"tracking", "cleaning":["tracking"]}, 
+        "more_information"
+    ]
+ } 
