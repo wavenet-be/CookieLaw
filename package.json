@@ -1,6 +1,6 @@
 {
   "name": "@wavenet/cookie-law",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "description": "Helps your visitors to know which kind of cookies you're using + user preferences.",
   "main": "dist/CookieLaw.js",
   "files": [
@@ -34,9 +34,9 @@
   },
   "author": "Olivier Bossaer",
   "license": "LGPL-3.0",
-  "homepage": "https://github.com/wavenet-be/cookie-law#readme",
+  "homepage": "https://github.com/wavenet-be/CookieLaw/#readme",
   "bugs": {
-    "url": "https://github.com/wavenet-be/cookie-law/issues",
+    "url": "https://github.com/wavenet-be/CookieLaw/issues",
     "email": "cookie-law@wavenet.be"
   },
   "keywords": [
