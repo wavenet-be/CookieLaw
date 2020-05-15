@@ -27,6 +27,7 @@ export interface CookieLawSettings
     storage?: 'local' | 'cookie';
     isOptOut?: boolean;
     licence?: boolean;
+    defaultCheckboxState?: boolean;
 }
 
 let settings: CookieLawSettings;
@@ -35,6 +36,7 @@ export function loadSettings(cb: (settings:CookieLawSettings)=>void)
 {
     function fill()
     {
+        settings.defaultCheckboxState = settings.defaultCheckboxState ?? true;
         settings.locale = settings.locale || document.querySelector('html').lang;
         settings.labels = {...getLabels(settings.locale), ...settings.labels};
         settings.categories = getCategories(settings.locale, settings.categories || defaultCategories);

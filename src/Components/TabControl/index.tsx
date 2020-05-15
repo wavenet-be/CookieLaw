@@ -23,17 +23,17 @@ export class TabControl extends Component<TabControlProps, TabControlState>
     {
         super(props);
         const prefs = PreferencesRepository.load();
-        for (let pref in prefs)
+        const consents: { [name: string]: boolean } = {};
+        for (const category of props.categories)
         {
-            const category = props.categories.find(t => t.code === pref);
-            if (category)
+            if (category.consent == null || category.required)
             {
-                category.consent = prefs[pref];
+                continue;
             }
+
+            consents[category.code] = prefs[category.code] ?? this.settings.defaultCheckboxState;
         }
 
-        type ConsentMap = { [name: string]: boolean };
-        const consents = props.categories.filter(t => t.consent != null).reduce<ConsentMap>((c, t) => { c[t.code] = t.consent; return c; }, {});
         this.state = { currentCategory: props.categories[0], consents };
     }
 
