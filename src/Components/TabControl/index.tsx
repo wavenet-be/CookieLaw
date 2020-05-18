@@ -26,12 +26,12 @@ export class TabControl extends Component<TabControlProps, TabControlState>
         const consents: { [name: string]: boolean } = {};
         for (const category of props.categories)
         {
-            if (category.consent == null || category.required)
+            if (category.consent == null)
             {
                 continue;
             }
 
-            consents[category.code] = prefs[category.code] ?? this.settings.defaultCheckboxState;
+            consents[category.code] = category.required || (prefs[category.code] ?? this.settings.defaultCheckboxState);
         }
 
         this.state = { currentCategory: props.categories[0], consents };
