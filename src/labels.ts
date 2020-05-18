@@ -16,7 +16,7 @@ export interface Labels
     cookieUsed: string;
 }
 
-type BuiltinLocale = "default" | "fr" | "nl";
+type BuiltinLocale = "default" | "fr" | "nl" | "de";
 const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
 {
     default:
@@ -59,9 +59,22 @@ const locales: { [locale in BuiltinLocale]: Partial<Labels> } =
         dialogCheckboxAlways: "Altijd",
         dialogCheckboxActive: "Actief",
         dialogCheckboxInactive: "Inactief"
+    },
+    de:
+    {
+        bannerTitle: "Wir verwenden Cookies",
+        bannerMessage: "Wir verwenden Cookies und andere Tracking-Technologien, um Ihre Navigation auf unserer Website zu verbessern, personalisierte Inhalte anzuzeigen, den Verkehr auf der Website zu analysieren und festzustellen, woher unsere Besucher kommen. Weitere Informationen zu Cookies, die mit dieser Website verlinkt sind, finden Sie in unserer [Cookie-Richtlinie][cookiePolicy].",
+        bannerOk: "OK",
+        bannerPreferences: "Cookie-Einstellungen ändern",
+        dialogNext: 'Folgenden',
+        dialogPrevious: 'Vorhergehend',
+        dialogSavePreferences: "Einstellungen speichern",
+        dialogCheckboxAlways: "Immer",
+        dialogCheckboxActive: "Aktiv",
+        dialogCheckboxInactive: "Nicht aktiv"
     }
 };
-const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<CookieCategory>} } =
+const defaultCategories: { [code: string]: { [locale in BuiltinLocale]: Partial<CookieCategory> } } =
 {
     "introduction":
     {
@@ -74,7 +87,7 @@ const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<Co
                 "You can adapt your preferences and decline certain types of cookies while browsing our website. You can also remove any cookies already stored on your computer, but keep in mind that deleting cookies may prevent you from using parts of our website."
             ]
         },
-        "fr": 
+        "fr":
         {
             "tabTitle": "Votre vie privée",
             "title": "Respecter votre vie privée nous tient à cœur",
@@ -83,13 +96,22 @@ const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<Co
                 "Vous pouvez adapter vos préférences et refuser certains types de cookies en naviguant sur notre site web. Vous pouvez également supprimer tout cookie déjà stocké sur votre ordinateur, mais gardez à l’esprit que sa suppression pourra vous empêcher d’utiliser certaines parties du site."
             ]
         },
-        "nl": 
+        "nl":
         {
             "tabTitle": "Uw privacy",
             "title": "Uw privacy is belangrijk voor ons",
             "description": [
                 "Een cookie is een klein tekstbestand dat een website op uw computer of mobiel toestel opslaat wanneer u die site bezoekt. Zo onthoudt de website de pagina’s die u heeft bezocht en uw voorkeuren (zoals gebruikersnaam, taal, lettergrootte en andere voorkeuren) zodat u die niet bij ieder bezoek aan de site opnieuw hoeft aan te passen.",
                 "U kan uw voorkeuren instellen en bepaalde types van cookies weigeren tijdens het browsen. Het weigeren van bepaalde cookies kan wel inhouden dat u sommige onderdelen van de website niet meer kan gebruiken."
+            ]
+        },
+        "de":
+        {
+            "tabTitle": "Ihrer Privatsphäre",
+            "title": "Die Achtung Ihrer Privatsphäre ist uns wichtig",
+            "description": [
+                "Cookies sind kleine Dateien, die beim Besuch einer Website auf Ihrem Computer gespeichert werden. Wir verwenden sie zu unterschiedlichen Zwecken, insbesondere zur Verbesserung Ihrer Benutzererfahrung auf unserer Website (etwa zum Speichern der Anmeldedaten Ihres Benutzerzugangs oder von Angaben zu Werbung, die Ihnen bereits angezeigt wurde).",
+                "Sie können Ihre Cookie-Einstellungen ändern und beim Surfen auf unserer Website bestimmte Cookies ablehnen. Sie können auch alle bereits auf Ihrem Computer gespeicherten Cookies löschen, aber bedenken Sie, dass Sie dann möglicherweise bestimmte Teile der Website nicht mehr nutzen können."
             ]
         }
     },
@@ -104,18 +126,25 @@ const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<Co
                 "These cookies are essential to provide you with services available through our website and to enable you to use certain features of our website. Without these cookies, we cannot provide you with certain services of our website."
             ]
         },
-        "fr": 
+        "fr":
         {
             "title": "Cookies strictement nécessaires",
             "description": [
                 "Ces cookies sont indispensables pour pouvoir accéder aux services disponibles sur notre site web et vous permettre d’utiliser certaines de ses fonctionnalités. Sans ces cookies, nous ne pouvons pas vous fournir certains services du site."
             ]
         },
-        "nl": 
+        "nl":
         {
             "title": "Strikt noodzakelijke cookies",
             "description": [
                 "Deze cookies zijn essentieel om toegang te krijgen tot de diensten van onze website en om bepaalde functionaliteiten te gebruiken. Deze cookies zullen dus bij elk websitebezoek geactiveerd worden."
+            ]
+        },
+        "de":
+        {
+            "title": "Unbedingt erforderliche Cookies",
+            "description": [
+                "Diese Cookies sind für den Zugriff auf die Dienste unserer Website unverzichtbar und ermöglichen Ihnen die Nutzung bestimmter Funktionen. Ohne diese Cookies können wir Ihnen bestimmte Dienste der Website nicht bereitstellen."
             ]
         }
     },
@@ -136,11 +165,18 @@ const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<Co
                 "Ces cookies sont utilisés pour vous fournir une expérience plus personnalisée sur notre site et pour mémoriser les choix que vous faites quand vous utilisez celui-ci. Par exemple, nous pouvons utiliser les cookies liés aux fonctionnalités pour sauvegarder la langue sélectionnée ou les détails de votre login."
             ]
         },
-        "nl": 
+        "nl":
         {
             "title": "Functionele cookies",
             "description": [
                 "We gebruiken deze cookies om u een meer gepersonaliseerde ervaring op onze website te bieden en om uw keuzes te onthouden. We kunnen bijvoorbeeld functionele cookies gebruiken om uw taalvoorkeuren en aanmeldgegevens te bewaren."
+            ]
+        },
+        "de":
+        {
+            "title": "Funktionscookies",
+            "description": [
+                "Diese Cookies werden verwendet, um Ihnen ein persönlicheres Erlebnis auf unserer Website zu bieten und um sich an die Entscheidungen zu erinnern, die Sie bei der Verwendung treffen. Beispielsweise können wir funktionsbezogene Cookies verwenden, um die ausgewählte Sprache oder Ihre Anmeldedaten zu speichern."
             ]
         }
     },
@@ -167,6 +203,13 @@ const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<Co
             "description": [
                 "Door deze cookies te gebruiken, verzamelen we informatie om ons websiteverkeer en het gebruik door de bezoekers te analyseren. De prestatiecookies kunnen onthouden hoe lang een bezoeker op de website of webpagina's actief is geweest. Hierdoor kunnen we onze website verbeteren voor u. De verzamelde informatie wordt niet gekoppeld aan een individuele bezoeker."
             ]
+        },
+        "de":
+        {
+            "title": "Tracking- und Performance-Cookies",
+            "description": [
+                "Diese Cookies werden zum Sammeln von Informationen zur Analyse des Traffic auf unserer Website und darüber, wie diese von den Besuchern genutzt wird, verwendet. Diese Cookies können zum Beispiel die Verweildauer auf der Website oder die aufgerufenen Seiten speichern. Das hilft uns zu verstehen, wie wir unsere Website für Sie optimieren können. Mit diesen Informationen lässt sich die Identität eines einzelnen Besuchers nicht ermitteln."
+            ]
         }
     },
     "more_information":
@@ -178,7 +221,7 @@ const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<Co
                 "You can find more information about the specific cookies we use in our [cookie policy][cookiePolicy]."
             ]
         },
-        "fr": 
+        "fr":
         {
             "title": "Informations complémentaires",
             "description": [
@@ -191,6 +234,13 @@ const defaultCategories: { [code: string]: {[locale in BuiltinLocale]:Partial<Co
             "description": [
                 "Meer informatie over de specifieke cookies die wij gebruiken, vindt u in ons [cookiebeleid][cookiePolicy]"
             ]
+        },
+        "de":
+        {
+            "title": "Weitere Informationen",
+            "description": [
+                "Weitere Informationen zu den von uns verwendeten Cookies finden Sie in unserer [Cookie-Richtlinie][cookiePolicy]."
+            ]
         }
     }
 };
@@ -202,21 +252,21 @@ export function getLabels(locale: string)
 export function getCategories(locale: string, categories: (CookieCategory | string)[])
 {
     return categories.map(category =>
+    {
+        if (typeof category === "string")
         {
-            if (typeof category === "string")
+            const cat = defaultCategories[category];
+            if (cat)
             {
-                const cat = defaultCategories[category];
-                if (cat)
-                {
-                    return {code: category, ...cat.default, ...cat[locale as BuiltinLocale] } as CookieCategory;
-                }
+                return { code: category, ...cat.default, ...cat[locale as BuiltinLocale] } as CookieCategory;
             }
-            else
-            {
-                const cat = defaultCategories[category.code];
-                return cat ? 
-                    {...cat.default, ...cat[locale as BuiltinLocale], ...category} :
-                    category;
-            }
-        });
+        }
+        else
+        {
+            const cat = defaultCategories[category.code];
+            return cat ?
+                { ...cat.default, ...cat[locale as BuiltinLocale], ...category } :
+                category;
+        }
+    });
 }
